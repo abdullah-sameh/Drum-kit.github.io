@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./mystyle.css">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li data-key="65">a</li>
+        <li data-key="83">s</li>
+        <li data-key="68">d</li>
+        <li data-key="70">f</li>
+        <li data-key="71">g</li>
+        <li data-key="72">h</li>
+        <li data-key="74">j</li>
+        <li data-key="75">k</li>
+        <li data-key="76">l</li>
+    </ul>
+    <audio data-key="65" src="./sound/01 - JavaScript Drum Kit_sounds_clap.wav"></audio>
+    <audio data-key="83" src="./sound/clap-clean-reverb-14521.mp3"></audio>
+    <audio data-key="68" src="./sound/hip-hop-beat-2-hey-49043.mp3"></audio>
+    <audio data-key="70" src="./sound/01 - JavaScript Drum Kit_sounds_openhat.wav"></audio>
+    <audio data-key="71" src="./sound/01 - JavaScript Drum Kit_sounds_boom.wav"></audio>
+    <audio data-key="72" src="./sound/01 - JavaScript Drum Kit_sounds_ride.wav"></audio>
+    <audio data-key="74" src="./sound/01 - JavaScript Drum Kit_sounds_snare.wav"></audio>
+    <audio data-key="75" src="./sound/01 - JavaScript Drum Kit_sounds_tom.wav"></audio>
+    <audio data-key="76" src="./sound/01 - JavaScript Drum Kit_sounds_tink.wav"></audio>
+<script>
+    window.addEventListener('keydown', function playSound(e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`li[data-key="${e.keyCode}"]`);
+        if (!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+        key.classList.add("effect");
+        setTimeout(() => {
+            key.classList.remove("effect");
+        }, 100);
+    }, 20000);
+</script>
+</body>
+</html>
